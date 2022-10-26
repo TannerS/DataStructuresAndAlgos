@@ -1,8 +1,8 @@
 package dev.tanners.node;
 
 public class Node<T> {
-  protected T data;
-  protected Node<T> next;
+  public T data;
+  public Node<T> next;
 
   public Node() {
     this.next = null;
@@ -17,17 +17,5 @@ public class Node<T> {
   public Node(T data, Node<T> next) {
     this.data = data;
     this.next = next;
-  }
-
-  public Node<T> getNext() {
-    return next;
-  }
-
-  public void setData(T data) {
-    this.data = data;
-  }
-
-  public T getData() {
-    return this.data;
   }
 }

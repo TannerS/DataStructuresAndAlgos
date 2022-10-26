@@ -6,24 +6,23 @@ import dev.tanners.node.Node;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-
 public class NodeTest {
   @Test
-  @DisplayName("Creating empty node doesnt include data or next in constructor")
+  @DisplayName("Creating empty list doesnt via constructor doesnt set next or data")
   void testEmptyNodeConstructor() {
     Node<Integer> node = new Node<>();
 
-    assertNull(node.getData());
-    assertNull(node.getNext());
+    assertNull(node.data);
+    assertNull(node.next);
   }
 
   @Test
   @DisplayName("Creating node doesnt include data in constructor")
   void testEmptyDataNodeConstructor() {
-    Node<Integer> node = new Node<>(null, new Node<Integer>());
+    Node<Integer> node = new Node<>(null, new Node<>());
 
-    assertNull(node.getData());
-    assertNotNull(node.getNext());
+    assertNull(node.data);
+    assertNotNull(node.next);
   }
 
   @Test
@@ -31,8 +30,29 @@ public class NodeTest {
   void testEmptyNextNodeConstructor() {
     Node<Integer> node = new Node<>(5);
 
-    assertNotNull(node.getData());
-    assertEquals(node.getData(), 5);
-    assertNull(node.getNext());
+    assertEquals(node.data, 5);
+    assertNull(node.next);
+  }
+
+  @Test
+  @DisplayName("Setting data works as expected")
+  void testSettingData() {
+    Node<Integer> node = new Node<>();
+
+    node.data = 54;
+
+    assertEquals(node.data, 54);
+    assertNull(node.next);
+  }
+
+  @Test
+  @DisplayName("Setting next works as expected")
+  void testSettingNext() {
+    Node<Integer> node = new Node<>();
+
+    node.next = new Node<>();
+
+    assertNull(node.data);
+    assertNotNull(node.next);
   }
 }
